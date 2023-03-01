@@ -1,14 +1,13 @@
 import numpy as np
 from scipy.spatial import Voronoi, voronoi_plot_2d
 from utils import polygon_intersection
+import matplotlib.pyplot as plt
 
-
-class Bounded_Voronoi():
+class BoundedVoronoi():
     def __init__(self, points, bounding_polygon):
         
         dummy_poitns = np.array([[-100, -100], [100, -100], [100, 100], [-100, 100]])
         self.points = points
-        # np.vstack((points, dummy_poitns))
         vor = Voronoi(np.vstack((points, dummy_poitns)))
         self.regions = []
         for i, region in enumerate(vor.point_region[0:-4]):
@@ -40,8 +39,6 @@ if __name__ == '__main__':
     n = 5
     points = np.random.rand(5,2)
 
-    vor = Bounded_Voronoi(points, bounding_polygon)
+    vor = BoundedVoronoi(points, bounding_polygon)
     vor.plot()
-    plt.scatter(bounding_polygon[:,0], bounding_polygon[:,1], color = 'black')
-    plt.scatter(points[:,0], points[:,1],color='red')
     plt.show()
