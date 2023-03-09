@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.spatial import Voronoi, voronoi_plot_2d
-from utils import polygon_intersection
+from utils import *
 import matplotlib.pyplot as plt
 
 class BoundedVoronoi():
